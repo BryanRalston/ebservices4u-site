@@ -45,7 +45,7 @@ window.SITE_CONFIG = {
   // Analytics (GoatCounter: free, no cookies, no consent banner needed).
   // Put the account code here, e.g. "ebservices4u" for https://ebservices4u.goatcounter.com.
   // While empty, no analytics script loads.
-  analytics: { goatcounter: "" },
+  analytics: { goatcounter: "ebservices4u" },
 
   // Social links. Change instagram to https://www.instagram.com/ebservices4u when the handle moves.
   social: {
