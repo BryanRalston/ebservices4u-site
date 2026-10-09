@@ -8,6 +8,7 @@
    ========================================================================== */
 window.SITE_CONFIG = {
   businessName: "EBServices",
+  legalName: "EBServices LLC",      // Virginia LLC, formed April 29, 2023 (VA SCC)
   foundedYear: 2023,
   siteUrl: "https://ebservices4u.com",
 
@@ -20,7 +21,7 @@ window.SITE_CONFIG = {
   email: "Ebservices4U@outlook.com",
 
   // Service area. Leave "" to hide. e.g. "Leesburg and Loudoun County, VA"
-  serviceArea: "",
+  serviceArea: "Leesburg & Loudoun County, VA",
   // Optional list of towns for the structured data (areaServed)
   townsServed: [],              // e.g. ["Leesburg", "Ashburn", "Sterling"]
 
@@ -35,7 +36,8 @@ window.SITE_CONFIG = {
 
   // Street address for Google/structured data only (not shown on the page).
   address: {
-    streetAddress: "", addressLocality: "", addressRegion: "", postalCode: "", addressCountry: "US"
+    // Locality only. Do NOT add the street address (not for publication).
+    streetAddress: "", addressLocality: "Leesburg", addressRegion: "VA", postalCode: "20175", addressCountry: "US"
   },
 
   // Social links. Change instagram to https://www.instagram.com/ebservices4u when the handle moves.

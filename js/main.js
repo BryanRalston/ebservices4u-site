@@ -36,6 +36,7 @@
   $$('[data-service-area]').forEach(function (el) { el.textContent = C.serviceArea || ''; });
   $$('[data-hours]').forEach(function (el) { el.textContent = C.hours || ''; });
   $$('[data-founded]').forEach(function (el) { if (C.foundedYear) el.textContent = C.foundedYear; });
+  $$('[data-legal-name]').forEach(function (el) { if (C.legalName) el.textContent = C.legalName; });
   $$('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
   if (C.licenseNumber) {
     $$('[data-license]').forEach(function (el) { el.textContent = C.licenseNumber; });
@@ -59,9 +60,9 @@
       var data = JSON.parse(ld.textContent);
       if (has.phone) data.telephone = C.phoneTel;
       if (C.townsServed && C.townsServed.length) data.areaServed = C.townsServed.map(function (t) { return { '@type': 'City', name: t }; });
-      else if (C.serviceArea) data.areaServed = C.serviceArea;
-      var a = C.address || {};
-      if (a.streetAddress && a.addressLocality) data.address = Object.assign({ '@type': 'PostalAddress' }, a);
+      var a = C.address || {}, addr = { '@type': 'PostalAddress' };
+      Object.keys(a).forEach(function (k) { if (a[k]) addr[k] = a[k]; });
+      if (a.addressLocality) data.address = addr;
       var same = [social.instagram, social.facebook, social.google].filter(Boolean);
       if (same.length) data.sameAs = same;
       ld.textContent = JSON.stringify(data);

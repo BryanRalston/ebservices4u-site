@@ -15,6 +15,11 @@ CNAME             Custom domain for GitHub Pages (ebservices4u.com)
 sitemap.xml, robots.txt, site.webmanifest, favicon.ico, icons
 ```
 
+## Verified facts (VA SCC)
+Legal name EBServices LLC, an active Virginia LLC formed April 29, 2023, based in Leesburg, VA (Loudoun County).
+The site publishes only the town, state and ZIP (20175). **Do not publish** the street address, the license
+number, the owner's or registered agent's names, or any "licensed" claim until the license is verified.
+
 ## Updating business info: `js/config.js`
 
 The page never shows a placeholder. While a fact is empty (`""` or `null`), whatever
@@ -30,7 +35,8 @@ depends on it stays hidden. Fill it in, commit, and it appears everywhere at onc
 | `freeEstimates: true` | "Free Estimates" trust item + FAQ |
 | `licensed: true` and `insured: true` | "Licensed & Insured" trust item + FAQ |
 | `licenseNumber` | Shown under the Licensed & Insured trust item and in the FAQ |
-| `address.*` | `address` in JSON-LD only (not shown on the page). Needs street and locality. |
+| `legalName` | Footer copyright line |
+| `address.*` | `address` in JSON-LD only (not shown on the page). Currently locality/region/ZIP only; keep `streetAddress` empty. |
 | `social.instagram/facebook/google` | Instagram/Facebook/Google icons and links. Empty means hidden. Switch Instagram to `https://www.instagram.com/ebservices4u` when the handle changes. |
 
 **Search engines:** the static JSON-LD block in `index.html` (`#ld-business`) holds the
@@ -61,7 +67,7 @@ plus a `-480.webp` version, then update `width`/`height` in `index.html` if the 
 ratio changes.
 
 ## Still to confirm with the owner
-Phone, service area / towns, hours, licensed & insured status (+ license number),
+Phone, hours, licensed & insured status (+ license number),
 free estimates, business address (for Google Business Profile / JSON-LD), owner name and story,
 reviews, the full service list, and project locations.
 
