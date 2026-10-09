@@ -506,3 +506,87 @@ body.menu-open .site-header{backdrop-filter:none;-webkit-backdrop-filter:none;ba
 }
 a.service-img{display:block}
 @media (max-width:640px){.svc-hero .eyebrow-rule{display:block;line-height:1.7}.svc-hero .eyebrow-rule::before{display:none}}
+
+/* ==========================================================================
+   Owner-confirmed update: specialties, technology, quote, icon heroes
+   ========================================================================== */
+/* Specialty cards (icon-led) */
+.service-feature{position:relative;background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);overflow:hidden}
+.service-feature::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--brass),rgba(203,166,78,0));transform:scaleX(.25);transform-origin:left;transition:transform .5s var(--ease)}
+.service-feature:hover::before{transform:scaleX(1)}
+.service-icon{display:flex;align-items:center;justify-content:center;width:68px;height:68px;margin:30px 20px 4px;border:1px solid var(--line);color:var(--brass);transition:background .35s var(--ease),color .35s var(--ease),border-color .35s}
+.service-icon svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.service-feature:hover .service-icon{background:var(--brass);color:var(--on-brass);border-color:var(--brass)}
+.service-feature .service-body{padding-top:18px}
+.service-feature h3{font-size:27px}
+.more-services{margin-top:34px;padding-top:26px;border-top:1px solid var(--line-soft);display:flex;align-items:baseline;gap:28px;flex-wrap:wrap}
+.more-label{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.more-links{display:flex;gap:10px 30px;flex-wrap:wrap}
+.more-links a{font-family:var(--serif);font-size:21px;color:var(--text);border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.more-links a span{color:var(--brass);font-family:var(--sans);font-size:14px;margin-left:4px;display:inline-block;transition:transform .25s var(--ease)}
+.more-links a:hover{color:var(--brass-hover);border-color:var(--line)}
+.more-links a:hover span{transform:translateX(3px)}
+
+/* Hero area line */
+.area-sub{color:var(--muted)}
+
+/* Technology-forward section */
+.tech{position:relative;background:radial-gradient(ellipse 60% 70% at 85% 40%,rgba(203,166,78,.08),rgba(12,12,12,0) 70%),var(--bg);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.tech-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.tech-copy h2{margin-bottom:0}
+.tech-copy .muted{margin-bottom:22px;max-width:540px}
+.tech-list{display:grid;gap:12px;margin-bottom:34px}
+.tech-list li{position:relative;padding-left:26px;font-size:15px;color:var(--text)}
+.tech-list li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border:1px solid var(--brass);transform:rotate(45deg)}
+.tech-quote{position:relative;margin:0;padding:44px 40px 40px;background:var(--surface);border:1px solid var(--line)}
+.tech-quote .q-mark{position:absolute;top:-6px;left:28px;font-family:var(--serif);font-size:110px;line-height:1;color:var(--brass);opacity:.9}
+.tech-quote blockquote p{font-family:var(--serif);font-style:italic;font-size:clamp(25px,2.4vw,32px);line-height:1.3;color:var(--text);margin-top:22px}
+.tech-quote figcaption{display:flex;flex-direction:column;gap:2px;margin-top:22px;padding-left:44px;position:relative}
+.tech-quote figcaption::before{content:"";position:absolute;left:0;top:.75em;width:30px;height:1px;background:var(--brass)}
+.q-name{font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+.q-role{font-size:13px;color:var(--muted)}
+.tech-photo{position:relative;margin-top:30px;overflow:hidden;aspect-ratio:16/11}
+.tech-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.tech-cap{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;font-size:12px;color:var(--text);background:linear-gradient(0deg,rgba(12,12,12,.85),rgba(12,12,12,0))}
+.quote-band{padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,96px)}
+.tech-quote.solo{max-width:860px;margin:0 auto;text-align:center;padding:56px clamp(24px,5vw,64px) 48px}
+.tech-quote.solo .q-mark{left:50%;transform:translateX(-50%)}
+.tech-quote.solo figcaption{align-items:center;padding-left:0;padding-top:20px}
+.tech-quote.solo figcaption::before{left:50%;top:0;transform:translateX(-50%)}
+
+/* Icon-art hero for service pages without project photos */
+.svc-hero-art{position:absolute;top:0;right:0;bottom:0;width:42%;display:flex;align-items:center;justify-content:center;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 55% 50%,rgba(203,166,78,.12),rgba(12,12,12,0) 70%)}
+.svc-hero-art .art-diamond{position:absolute;width:min(30vw,380px);aspect-ratio:1;border:1px solid var(--line);transform:rotate(45deg)}
+.svc-hero-art .art-diamond.d2{width:min(21vw,270px);border-color:var(--line-strong);background:rgba(22,22,22,.6)}
+.svc-hero-art svg{position:relative;width:min(9vw,112px);height:auto;fill:none;stroke:var(--brass);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+
+/* Dropdown group labels */
+.main-nav .sub .sub-label{display:block;padding:10px 24px 6px;font-size:10px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
+.main-nav .sub .sub-label-2{border-top:1px solid var(--line-soft);margin-top:6px;padding-top:14px}
+
+@media (max-width:1180px){
+  .service-feature h3{font-size:25px}
+}
+@media (max-width:960px){
+  .tech-grid{grid-template-columns:1fr}
+  .tech-quote{padding:40px 26px 30px}
+  .svc-hero-art{width:100%;opacity:.35}
+  .main-nav .sub .sub-label{padding:10px 0 4px 16px}
+  .main-nav .sub .sub-label-2{padding-top:12px}
+}
+@media (max-width:640px){
+  .service-icon{width:54px;height:54px;margin:20px 14px 0}
+  .service-icon svg{width:24px;height:24px}
+  .service-feature h3{font-size:22px}
+  .more-services{flex-direction:column;gap:12px}
+  .more-links{flex-direction:column;gap:10px}
+  .more-links a{font-size:20px}
+  .area-sub{display:block}
+}
+@media (max-width:960px){.main-nav{background:#0A0A0A}}
+.nw{white-space:nowrap}
+@media (max-width:640px){
+  .hero .eyebrow-rule{display:block;text-align:center;letter-spacing:.2em;line-height:1.9;font-size:11px}
+  .hero .eyebrow-rule::before,.hero .eyebrow-rule::after{display:none}
+  .area-sub .dot-sep{display:none}
+}

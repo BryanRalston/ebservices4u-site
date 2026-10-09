@@ -4,7 +4,8 @@ Static site with no framework and no build step. GitHub Pages serves it from the
 
 ```
 index.html        Homepage (all sections)
-bathroom-remodeling/  interior-carpentry/  painting-drywall/  handyman-services/
+bathroom-remodeling/  basement-finishing/  kitchen-remodeling/  media-walls/   (specialties)
+interior-carpentry/  painting-drywall/  handyman-services/                     (secondary)
                   Service pages (clean URLs). Estimate buttons link to /?service=<val>#estimate,
                   which pre-selects the service in the homepage form.
 404.html          Not-found page (absolute paths, so it works at any URL depth)
@@ -18,10 +19,12 @@ CNAME             Custom domain for GitHub Pages (ebservices4u.com)
 sitemap.xml, robots.txt, site.webmanifest, favicon.ico, icons
 ```
 
-## Verified facts (VA SCC)
-Legal name EBServices LLC, an active Virginia LLC formed April 29, 2023, based in Leesburg, VA (Loudoun County).
-The site publishes only the town, state and ZIP (20175). **Do not publish** the street address, the license
-number, the owner's or registered agent's names, or any "licensed" claim until the license is verified.
+## Confirmed facts
+VA SCC: EBServices LLC, an active Virginia LLC formed April 29, 2023, based in Leesburg, VA 20175 (Loudoun County).
+Owner-confirmed (Oct 2026): owner-operator Evvon Boxill; phone (571) 302-1240; serves Northern Virginia;
+licensed & insured; 2+ years in business; specialties are bathrooms, basement finishing, kitchens and media walls.
+**Do not publish** the street address (private) or a license number (none provided). No reviews section until
+there are real reviews.
 
 ## Updating business info: `js/config.js`
 
@@ -36,16 +39,16 @@ depends on it stays hidden. Fill it in, commit, and it appears everywhere at onc
 | `townsServed` | Optional town list used for `areaServed` in JSON-LD (takes priority over `serviceArea`) |
 | `hours` | Hours row in the contact list |
 | `freeEstimates: true` | "Free Estimates" trust item + FAQ |
-| `licensed: true` and `insured: true` | Removed from the HTML for now (license not verified). To re-add, restore the `data-requires="licensedInsured"` trust item and FAQ from git history (commit 334b673). |
+| `licensed: true` and `insured: true` | "Licensed & Insured" trust item and FAQ (owner-confirmed; both set). |
 | `licenseNumber` | Shown under the Licensed & Insured trust item and in the FAQ |
 | `legalName` | Footer copyright line |
 | `address.*` | `address` in JSON-LD only (not shown on the page). Currently locality/region/ZIP only; keep `streetAddress` empty. |
 | `social.instagram/facebook/google` | Instagram/Facebook/Google icons and links. Empty means hidden. Switch Instagram to `https://www.instagram.com/ebservices4u` when the handle changes. |
 
 **Search engines:** the static JSON-LD block in `index.html` (`#ld-business`) holds the
-confirmed facts. `main.js` adds phone, area and address from the config at runtime, and
-Google reads that. Once the phone and address are final, it's also good to add them
-directly to that JSON block.
+confirmed facts, including telephone, founder (Evvon Boxill) and areaServed. Confirmed facts
+(phone, area, licensed & insured) are also baked into the static HTML by `facts()` in `common.py`,
+so they show even without JavaScript. Keep `address.streetAddress` empty.
 
 ## Estimate form
 
@@ -70,9 +73,9 @@ plus a `-480.webp` version, then update `width`/`height` in `index.html` if the 
 ratio changes.
 
 ## Still to confirm with the owner
-Phone, hours, licensed & insured status (+ license number),
-free estimates, business address (for Google Business Profile / JSON-LD), owner name and story,
-reviews, the full service list, and project locations.
+Hours, free estimates, license number (optional), real photos of basement, kitchen and
+media-wall projects (those pages currently show other EBServices work, captioned honestly),
+and reviews once they exist.
 
 ## Deploying
 Push to `main`. GitHub Pages publishes automatically. The custom domain is set in repo
@@ -81,11 +84,11 @@ Settings → Pages and in `CNAME`. DNS at Namecheap: A records for `@` →
 `bryanralston.github.io`. Then tick **Enforce HTTPS** in Settings → Pages.
 
 ## Service pages
-The four service pages are generated from `/workspace/ebservices/svc_content.py` + `build_services.py`
+The seven service pages are generated from `/workspace/ebservices/svc_content.py` + `build_services.py`
 (the homepage from `index.tpl.html` + `build_html.py`, shared nav in `common.py`) on the build box.
 They are plain HTML, so small text edits can also be made directly in each `*/index.html`.
 Each page has its own title/description/OG tags plus Service, BreadcrumbList and FAQPage JSON-LD.
-Form service values: bathroom, carpentry, painting, handyman, other.
+Form service values: bathroom, basement, kitchen, media-wall, carpentry, painting, handyman, other.
 
 ## Logo
 `assets/img/logo.png` is the owner's official logo with the dark background removed (exact alpha
