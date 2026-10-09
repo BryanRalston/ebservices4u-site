@@ -30,7 +30,7 @@ window.SITE_CONFIG = {
 
   // Trust items: set to true only once confirmed with the owner.
   freeEstimates: null,          // true -> shows "Free Estimates"
-  licensed: null,               // true -> shows "Licensed & Insured" (needs insured too)
+  licensed: null,               // NOT verified. The Licensed & Insured markup was removed from index.html (see README)
   insured: null,
   licenseNumber: "",            // e.g. "VA Class C #2705xxxxxx"
 

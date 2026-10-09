@@ -33,7 +33,7 @@ depends on it stays hidden. Fill it in, commit, and it appears everywhere at onc
 | `townsServed` | Optional town list used for `areaServed` in JSON-LD (takes priority over `serviceArea`) |
 | `hours` | Hours row in the contact list |
 | `freeEstimates: true` | "Free Estimates" trust item + FAQ |
-| `licensed: true` and `insured: true` | "Licensed & Insured" trust item + FAQ |
+| `licensed: true` and `insured: true` | Removed from the HTML for now (license not verified). To re-add, restore the `data-requires="licensedInsured"` trust item and FAQ from git history (commit 334b673). |
 | `licenseNumber` | Shown under the Licensed & Insured trust item and in the FAQ |
 | `legalName` | Footer copyright line |
 | `address.*` | `address` in JSON-LD only (not shown on the page). Currently locality/region/ZIP only; keep `streetAddress` empty. |
