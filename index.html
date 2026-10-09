@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>EBServices | Home Improvement &amp; Remodeling in Leesburg, VA</title>
-  <meta name="description" content="EBServices LLC is a Leesburg, VA home improvement company serving Loudoun County: handyman work, bathroom remodeling, interior doors, closet and pantry shelving, and accent walls. Request an estimate online.">
+  <meta name="description" content="EBServices LLC is a Leesburg, VA home improvement company serving Loudoun County: bathroom remodeling, interior carpentry and finish work, painting and drywall, and handyman home repairs. Request an estimate online.">
   <link rel="canonical" href="https://ebservices4u.com/">
   <meta name="theme-color" content="#0C0C0C">
   <meta name="color-scheme" content="dark">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="EBServices">
   <meta property="og:title" content="EBServices | Home Improvement &amp; Remodeling in Leesburg, VA">
-  <meta property="og:description" content="Custom work for your home, done right. Handyman jobs and small to medium projects in Leesburg &amp; Loudoun County, VA, from bathroom remodels to doors, shelving and accent walls.">
+  <meta property="og:description" content="Custom work for your home, done right. Handyman jobs and small to medium projects in Leesburg &amp; Loudoun County, VA, from bathroom remodels to carpentry, painting and drywall.">
   <meta property="og:url" content="https://ebservices4u.com/">
   <meta property="og:image" content="https://ebservices4u.com/assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -54,7 +54,7 @@
     "areaServed": [{"@type": "AdministrativeArea", "name": "Loudoun County, VA"}, {"@type": "City", "name": "Leesburg, VA"}],
     "description": "Built on years of experience delivering custom solutions for homes. Taking on handyman jobs and small & medium size projects.",
     "sameAs": ["https://www.instagram.com/ebservices2u"],
-    "knowsAbout": ["Bathroom remodeling", "Vanity installation", "Shower and tub remodeling", "Interior door installation", "Closet and pantry shelving", "Accent walls", "Handyman services"]
+    "knowsAbout": ["Bathroom remodeling", "Interior carpentry", "Finish carpentry", "Interior painting", "Drywall repair", "Handyman services", "Home repairs"]
   }
   </script>
 </head>
@@ -73,8 +73,14 @@
     </a>
 
     <nav class="main-nav" id="main-nav" aria-label="Main">
-      <ul>
-        <li><a href="#services">Services</a></li>
+      <ul class="nav-list">
+        <li class="has-sub">
+          <button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-services">Services <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <ul class="sub" id="sub-services">
+            <li><a href="/bathroom-remodeling/">Bathroom Remodeling</a></li><li><a href="/interior-carpentry/">Interior Carpentry &amp; Finish Work</a></li><li><a href="/painting-drywall/">Painting &amp; Drywall</a></li><li><a href="/handyman-services/">Handyman &amp; Home Repairs</a></li>
+            <li class="sub-all"><a href="#services">All services <span aria-hidden="true">&rarr;</span></a></li>
+          </ul>
+        </li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#about">About</a></li>
@@ -105,7 +111,7 @@
   <div class="hero-media"><img src="assets/img/slat-powder-room.webp" srcset="assets/img/slat-powder-room-480.webp 480w, assets/img/slat-powder-room.webp 592w" sizes="(max-width: 900px) 100vw, 46vw" width="592" height="728" alt="Powder room with a dark slat accent wall, floating vanity and lit floating shelves, finished by EBServices" class="hero-img" fetchpriority="high"></div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <p class="eyebrow eyebrow-rule hero-anim" style="--d:0ms">Handyman <span class="dot">&middot;</span> Bathrooms <span class="dot hide-sm">&middot;</span> <span class="hide-sm">Interior Finish</span></p>
+      <p class="eyebrow eyebrow-rule hero-anim" style="--d:0ms">Handyman <span class="dot">&middot;</span> Bathrooms <span class="dot hide-sm">&middot;</span> <span class="hide-sm">Carpentry &amp; Painting</span></p>
       <h1 id="hero-title" class="hero-anim" style="--d:80ms">Custom work for your home, <em>done right.</em></h1>
       <span class="gold-rule hero-anim" style="--d:160ms"></span>
       <p class="lede hero-anim" style="--d:220ms">Built on years of experience delivering custom solutions for homes. From quick handyman fixes to small and medium size projects, every job gets real craftsmanship.</p>
@@ -154,48 +160,51 @@
     </div>
     <div class="service-grid">
         <article class="service reveal" style="--d:0ms">
-          <div class="service-img"><img src="assets/img/powder-room.webp" srcset="assets/img/powder-room-480.webp 480w, assets/img/powder-room.webp 708w" sizes="(max-width: 640px) 50vw, 240px" width="708" height="1168" alt="" loading="lazy" decoding="async"></div>
+          <a class="service-img" href="/bathroom-remodeling/" tabindex="-1" aria-hidden="true"><img src="assets/img/powder-room.webp" srcset="assets/img/powder-room-480.webp 480w, assets/img/powder-room.webp 708w" sizes="(max-width: 640px) 50vw, 240px" width="708" height="1168" alt="" loading="lazy" decoding="async"></a>
           <div class="service-body">
             <span class="service-num">01</span>
-            <h3>Bathroom Remodeling</h3>
-            <p>Vanities, showers, tubs and powder rooms, from a single fixture swap to a full bathroom refresh.</p>
-            <a class="service-link" href="#estimate" data-service="bathroom">Get an estimate <span aria-hidden="true">&rarr;</span></a>
+            <h3><a href="/bathroom-remodeling/">Bathroom Remodeling</a></h3>
+            <p>Vanities, sinks and faucets, lighting, showers, tubs, tile, toilets and powder rooms, from a single fixture swap to a full refresh.</p>
+            <div class="service-links">
+              <a class="service-link" href="/bathroom-remodeling/">Learn more <span aria-hidden="true">&rarr;</span></a>
+              <a class="service-link service-link-alt" href="#estimate" data-service="bathroom">Estimate</a>
+            </div>
           </div>
         </article>
         <article class="service reveal" style="--d:70ms">
-          <div class="service-img"><img src="assets/img/interior-door.webp" srcset="assets/img/interior-door-480.webp 480w, assets/img/interior-door.webp 708w" sizes="(max-width: 640px) 50vw, 240px" width="708" height="1168" alt="" loading="lazy" decoding="async"></div>
+          <a class="service-img" href="/interior-carpentry/" tabindex="-1" aria-hidden="true"><img src="assets/img/interior-door.webp" srcset="assets/img/interior-door-480.webp 480w, assets/img/interior-door.webp 708w" sizes="(max-width: 640px) 50vw, 240px" width="708" height="1168" alt="" loading="lazy" decoding="async"></a>
           <div class="service-body">
             <span class="service-num">02</span>
-            <h3>Interior Doors</h3>
-            <p>New interior doors and hardware, hung square and finished clean.</p>
-            <a class="service-link" href="#estimate" data-service="doors">Get an estimate <span aria-hidden="true">&rarr;</span></a>
+            <h3><a href="/interior-carpentry/">Interior Carpentry &amp; Finish Work</a></h3>
+            <p>Doors, trim and casing, shelving, closets and built-ins, fitted and finished clean.</p>
+            <div class="service-links">
+              <a class="service-link" href="/interior-carpentry/">Learn more <span aria-hidden="true">&rarr;</span></a>
+              <a class="service-link service-link-alt" href="#estimate" data-service="carpentry">Estimate</a>
+            </div>
           </div>
         </article>
         <article class="service reveal" style="--d:140ms">
-          <div class="service-img"><img src="assets/img/closet-shelving.webp" srcset="assets/img/closet-shelving-480.webp 480w, assets/img/closet-shelving.webp 708w" sizes="(max-width: 640px) 50vw, 240px" width="708" height="1168" alt="" loading="lazy" decoding="async"></div>
+          <a class="service-img" href="/painting-drywall/" tabindex="-1" aria-hidden="true"><img src="assets/img/accent-wall.webp" srcset="assets/img/accent-wall-480.webp 480w, assets/img/accent-wall.webp 592w" sizes="(max-width: 640px) 50vw, 240px" width="592" height="424" alt="" loading="lazy" decoding="async"></a>
           <div class="service-body">
             <span class="service-num">03</span>
-            <h3>Closet &amp; Pantry Shelving</h3>
-            <p>Shelving built to fit your closets and pantries so every inch gets used.</p>
-            <a class="service-link" href="#estimate" data-service="shelving">Get an estimate <span aria-hidden="true">&rarr;</span></a>
+            <h3><a href="/painting-drywall/">Painting &amp; Drywall</a></h3>
+            <p>Interior painting, accent walls, and drywall repair and patching for a smooth, finished look.</p>
+            <div class="service-links">
+              <a class="service-link" href="/painting-drywall/">Learn more <span aria-hidden="true">&rarr;</span></a>
+              <a class="service-link service-link-alt" href="#estimate" data-service="painting">Estimate</a>
+            </div>
           </div>
         </article>
         <article class="service reveal" style="--d:210ms">
-          <div class="service-img"><img src="assets/img/accent-wall.webp" srcset="assets/img/accent-wall-480.webp 480w, assets/img/accent-wall.webp 592w" sizes="(max-width: 640px) 50vw, 240px" width="592" height="424" alt="" loading="lazy" decoding="async"></div>
+          <a class="service-img" href="/handyman-services/" tabindex="-1" aria-hidden="true"><img src="assets/img/vanity-shutters.webp" srcset="assets/img/vanity-shutters-480.webp 480w, assets/img/vanity-shutters.webp 708w" sizes="(max-width: 640px) 50vw, 240px" width="708" height="1168" alt="" loading="lazy" decoding="async"></a>
           <div class="service-body">
             <span class="service-num">04</span>
-            <h3>Accent Walls</h3>
-            <p>Painted and trimmed feature walls that give a room character.</p>
-            <a class="service-link" href="#estimate" data-service="accent-wall">Get an estimate <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </article>
-        <article class="service reveal" style="--d:280ms">
-          <div class="service-img"><img src="assets/img/gray-vanity.webp" srcset="assets/img/gray-vanity-480.webp 480w, assets/img/gray-vanity.webp 592w" sizes="(max-width: 640px) 50vw, 240px" width="592" height="672" alt="" loading="lazy" decoding="async"></div>
-          <div class="service-body">
-            <span class="service-num">05</span>
-            <h3>Handyman Work</h3>
-            <p>Repairs, installs and the small jobs on your list, done with the same care as a remodel.</p>
-            <a class="service-link" href="#estimate" data-service="handyman">Get an estimate <span aria-hidden="true">&rarr;</span></a>
+            <h3><a href="/handyman-services/">Handyman &amp; Home Repairs</a></h3>
+            <p>Repairs, installs, punch lists and the small to medium jobs on your list, done with the same care as a remodel.</p>
+            <div class="service-links">
+              <a class="service-link" href="/handyman-services/">Learn more <span aria-hidden="true">&rarr;</span></a>
+              <a class="service-link service-link-alt" href="#estimate" data-service="handyman">Estimate</a>
+            </div>
           </div>
         </article>
     </div>
@@ -232,7 +241,7 @@
           <button type="button" class="project-open" data-gallery data-index="2" data-full="assets/img/accent-wall.webp" data-title="Geometric Accent Wall" data-alt="Navy accent wall with a geometric hexagon trim pattern" aria-label="View larger photo: Geometric Accent Wall">
             <span class="project-img"><img src="assets/img/accent-wall.webp" srcset="assets/img/accent-wall-480.webp 480w, assets/img/accent-wall.webp 592w" sizes="(max-width: 640px) 50vw, (max-width: 1000px) 45vw, 380px" width="592" height="424" alt="Navy accent wall with a geometric hexagon trim pattern" loading="lazy" decoding="async"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5M11 8v6M8 11h6"/></svg></span></span>
           </button>
-          <figcaption class="project-meta"><span class="tag">Interior Finish</span><h3>Geometric Accent Wall</h3></figcaption>
+          <figcaption class="project-meta"><span class="tag">Painting</span><h3>Geometric Accent Wall</h3></figcaption>
         </figure>
         <figure class="project-card reveal" style="--d:0ms">
           <button type="button" class="project-open" data-gallery data-index="3" data-full="assets/img/vanity-shutters.webp" data-title="Primary Bath Vanity" data-alt="Long primary bathroom vanity with gray cabinets next to plantation shutters" aria-label="View larger photo: Primary Bath Vanity">
@@ -250,7 +259,7 @@
           <button type="button" class="project-open" data-gallery data-index="5" data-full="assets/img/closet-shelving.webp" data-title="Door & Pantry Shelving" data-alt="Six-panel door opening onto a pantry closet with new shelving" aria-label="View larger photo: Door & Pantry Shelving">
             <span class="project-img"><img src="assets/img/closet-shelving.webp" srcset="assets/img/closet-shelving-480.webp 480w, assets/img/closet-shelving.webp 708w" sizes="(max-width: 640px) 50vw, (max-width: 1000px) 45vw, 380px" width="708" height="1168" alt="Six-panel door opening onto a pantry closet with new shelving" loading="lazy" decoding="async"><span class="zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5M11 8v6M8 11h6"/></svg></span></span>
           </button>
-          <figcaption class="project-meta"><span class="tag">Interior Finish</span><h3>Door & Pantry Shelving</h3></figcaption>
+          <figcaption class="project-meta"><span class="tag">Carpentry</span><h3>Door & Pantry Shelving</h3></figcaption>
         </figure>
     </div>
   </div>
@@ -288,7 +297,7 @@
       <p class="eyebrow">About EBServices</p>
       <h2 id="about-title">Started in <span data-founded>2023</span>. Built on <em>years of experience.</em></h2>
       <span class="gold-rule"></span>
-      <p>EBServices LLC is a Virginia company based in Leesburg, serving Loudoun County. It was built on years of experience delivering custom solutions for homes. We take on handyman jobs and small and medium size projects, and every one gets the same care, whether it is a new interior door or a full bathroom refresh.</p>
+      <p>EBServices LLC is a Virginia company based in Leesburg, serving Loudoun County. It was built on years of experience delivering custom solutions for homes. We take on handyman jobs and small and medium size projects, and every one gets the same care, whether it is a drywall patch, a new interior door or a full bathroom refresh.</p>
       <p>The work speaks for itself. Every photo on this site is a real EBServices job.</p>
       <div class="about-actions">
         <a href="#estimate" class="btn btn-outline">Start Your Project</a>
@@ -310,7 +319,7 @@
     <div class="faq-list reveal" style="--d:100ms">
       <details>
         <summary>What kinds of jobs do you take on?</summary>
-        <div class="faq-a"><p>Handyman jobs and small to medium size projects. That includes bathroom remodeling (vanities, showers, tubs and powder rooms), interior doors, closet and pantry shelving, accent walls and general repairs and installs.</p></div>
+        <div class="faq-a"><p>Handyman jobs and small to medium size projects. That includes <a class="inline-link" href="/bathroom-remodeling/">bathroom remodeling</a>, <a class="inline-link" href="/interior-carpentry/">interior carpentry and finish work</a> (doors, trim, shelving, closets and built-ins), <a class="inline-link" href="/painting-drywall/">painting and drywall</a>, and <a class="inline-link" href="/handyman-services/">handyman and home repairs</a>.</p></div>
       </details>
       <details>
         <summary>Is my job too small?</summary>
@@ -371,10 +380,9 @@
           <legend>What do you need? <span class="req" aria-hidden="true">*</span></legend>
           <div class="chips">
             <label class="chip"><input type="radio" name="service" value="Bathroom remodeling" data-val="bathroom" required><span>Bathroom</span></label>
-            <label class="chip"><input type="radio" name="service" value="Interior doors" data-val="doors"><span>Doors</span></label>
-            <label class="chip"><input type="radio" name="service" value="Closet / pantry shelving" data-val="shelving"><span>Shelving</span></label>
-            <label class="chip"><input type="radio" name="service" value="Accent wall" data-val="accent-wall"><span>Accent wall</span></label>
-            <label class="chip"><input type="radio" name="service" value="Handyman work" data-val="handyman"><span>Handyman</span></label>
+            <label class="chip"><input type="radio" name="service" value="Interior carpentry & finish work" data-val="carpentry"><span>Carpentry &amp; finish</span></label>
+            <label class="chip"><input type="radio" name="service" value="Painting & drywall" data-val="painting"><span>Painting &amp; drywall</span></label>
+            <label class="chip"><input type="radio" name="service" value="Handyman & home repairs" data-val="handyman"><span>Handyman &amp; repairs</span></label>
             <label class="chip"><input type="radio" name="service" value="Other" data-val="other"><span>Other</span></label>
           </div>
           <p class="field-error" id="err-service" aria-live="polite"></p>
@@ -446,6 +454,10 @@
         </a>
         <p class="muted">Custom work for your home, done right. Handyman jobs and small &amp; medium projects in Leesburg &amp; Loudoun County, VA.</p>
       </div>
+      <nav class="footer-nav" aria-label="Services">
+        <p class="footer-h">Services</p>
+        <a href="/bathroom-remodeling/">Bathroom Remodeling</a><a href="/interior-carpentry/">Interior Carpentry &amp; Finish Work</a><a href="/painting-drywall/">Painting &amp; Drywall</a><a href="/handyman-services/">Handyman &amp; Home Repairs</a>
+      </nav>
       <nav class="footer-nav" aria-label="Footer">
         <p class="footer-h">Explore</p>
         <a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#about">About</a><a href="#faq">FAQ</a>

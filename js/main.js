@@ -94,6 +94,7 @@
         } else if (link) { link.classList.remove('is-active'); }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
+    navLinks = navLinks.filter(function (l) { return /^#[\w-]+$/.test(l.getAttribute('href')); });
     navLinks.forEach(function (l) { var s = $(l.getAttribute('href')); if (s) secObs.observe(s); });
   }
 
@@ -121,6 +122,16 @@
     });
     window.matchMedia('(min-width: 961px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
   }
+
+  /* Services dropdown */
+  $$('.sub-toggle').forEach(function (btn) {
+    var li = btn.parentNode;
+    function set(open) { btn.setAttribute('aria-expanded', String(open)); li.classList.toggle('is-open', open); }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); set(btn.getAttribute('aria-expanded') !== 'true'); });
+    li.addEventListener('keydown', function (e) { if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { set(false); btn.focus(); e.stopPropagation(); } });
+    li.addEventListener('focusout', function (e) { if (!li.contains(e.relatedTarget) && window.innerWidth > 960) set(false); });
+    document.addEventListener('click', function (e) { if (!li.contains(e.target) && window.innerWidth > 960) set(false); });
+  });
 
   /* ---------- 4. Scroll reveal ---------- */
   var reveals = $$('.reveal');
@@ -189,6 +200,10 @@
       if (r) { r.checked = true; clearErr('service'); }
     });
   });
+  try {
+    var qs = new URLSearchParams(window.location.search).get('service');
+    if (qs) { var pre = form.querySelector('input[name="service"][data-val="' + qs.replace(/[^\w-]/g, '') + '"]'); if (pre) pre.checked = true; }
+  } catch (e) {}
   function setErr(name, msg) {
     var p = $('#err-' + name); if (p) p.textContent = msg;
     var input = name === 'service' ? null : form.elements[name];

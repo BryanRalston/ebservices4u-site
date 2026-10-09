@@ -4,6 +4,9 @@ Static site with no framework and no build step. GitHub Pages serves it from the
 
 ```
 index.html        Homepage (all sections)
+bathroom-remodeling/  interior-carpentry/  painting-drywall/  handyman-services/
+                  Service pages (clean URLs). Estimate buttons link to /?service=<val>#estimate,
+                  which pre-selects the service in the homepage form.
 404.html          Not-found page (absolute paths, so it works at any URL depth)
 thanks.html       Fallback thank-you page for the form when JavaScript is off
 css/style.css     All styles (palette tokens at the top)
@@ -76,3 +79,10 @@ Push to `main`. GitHub Pages publishes automatically. The custom domain is set i
 Settings → Pages and in `CNAME`. DNS at Namecheap: A records for `@` →
 185.199.108.153 / 185.199.109.153 / 185.199.110.153 / 185.199.111.153, and CNAME `www` →
 `bryanralston.github.io`. Then tick **Enforce HTTPS** in Settings → Pages.
+
+## Service pages
+The four service pages are generated from `/workspace/ebservices/svc_content.py` + `build_services.py`
+(the homepage from `index.tpl.html` + `build_html.py`, shared nav in `common.py`) on the build box.
+They are plain HTML, so small text edits can also be made directly in each `*/index.html`.
+Each page has its own title/description/OG tags plus Service, BreadcrumbList and FAQPage JSON-LD.
+Form service values: bathroom, carpentry, painting, handyman, other.
