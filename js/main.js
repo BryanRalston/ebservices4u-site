@@ -211,6 +211,36 @@
     });
   }
 
+  /* ---------- 5b. Before & after: lazy videos + compare slider ---------- */
+  $$('.ba-frame').forEach(function (fr) {
+    var v = fr.querySelector('video'), btn = fr.querySelector('.ba-play'), loaded = false, inView = false, userPaused = reduceMotion;
+    if (!v) return;
+    function load() {
+      if (loaded) return; loaded = true;
+      if (v.dataset.poster) v.poster = v.dataset.poster;
+      $$('source', v).forEach(function (s) { s.src = s.dataset.src; });
+      v.load();
+    }
+    function sync() { var p = !v.paused; btn.setAttribute('aria-pressed', String(p)); btn.setAttribute('aria-label', p ? 'Pause video' : 'Play video'); fr.classList.toggle('is-paused', !p); }
+    function play() { load(); var pr = v.play(); if (pr && pr.catch) pr.catch(function () { sync(); }); }
+    v.addEventListener('play', sync); v.addEventListener('pause', sync);
+    fr.classList.add('is-paused');
+    btn.addEventListener('click', function () { if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); } });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          inView = e.isIntersecting;
+          if (inView) { load(); if (!userPaused) play(); } else if (!v.paused) v.pause();
+        });
+      }, { rootMargin: '200px 0px', threshold: 0.01 }).observe(fr);
+    } else { load(); }
+  });
+  $$('.ba-slider').forEach(function (sl) {
+    var r = sl.querySelector('.ba-range');
+    function set() { sl.style.setProperty('--pos', r.value + '%'); }
+    r.addEventListener('input', set); set();
+  });
+
   /* ---------- 6. Estimate form ---------- */
   var form = $('#estimate-form'), ty = $('#thank-you');
   if (!form) return;

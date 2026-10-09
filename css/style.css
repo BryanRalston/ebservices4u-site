@@ -603,3 +603,47 @@ a.service-img{display:block}
 .ai-step h3{font-size:25px;margin-bottom:8px}
 .ai-step p{font-size:14.5px;color:var(--muted);line-height:1.6}
 @media (max-width:960px){.ai-steps{grid-template-columns:1fr;gap:14px}.ai-step:not(:last-child)::after{top:auto;bottom:-12px;right:auto;left:44px;transform:rotate(135deg)}}
+
+/* ==========================================================================
+   Before & after (videos, slider, pairs)
+   ========================================================================== */
+.ba-grid{display:grid;grid-template-columns:repeat(2,minmax(0,400px));justify-content:center;gap:clamp(20px,3vw,40px)}
+.ba-video,.ba-slider-wrap,.ba-pair{margin:0}
+.ba-frame{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#1a1a19,#0f0f0f);border:1px solid var(--line);overflow:hidden}
+.ba-frame video,.ba-frame noscript img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ba-play{position:absolute;right:14px;bottom:14px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(12,12,12,.72);border:1px solid var(--line-strong);color:var(--brass);border-radius:50%;transition:background .25s,color .25s,transform .25s var(--ease);z-index:2}
+.ba-play:hover{background:var(--brass);color:var(--on-brass)}
+.ba-play svg{width:18px;height:18px;fill:currentColor}
+.ba-play .i-pause{display:none}
+.ba-play[aria-pressed="true"] .i-play{display:none}
+.ba-play[aria-pressed="true"] .i-pause{display:block}
+.ba-frame.is-paused .ba-play{width:68px;height:68px;right:calc(50% - 34px);bottom:calc(50% - 34px)}
+.ba-frame.is-paused .ba-play svg{width:26px;height:26px}
+.ba-video figcaption,.ba-slider-wrap figcaption,.ba-pair figcaption{margin-top:14px;font-size:14px;color:var(--muted);line-height:1.5;padding-left:16px;border-left:1px solid var(--line-strong)}
+.ba-video figcaption{font-family:var(--serif);font-size:21px;color:var(--text);line-height:1.3}
+/* slider */
+.ba-slider{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);user-select:none;touch-action:pan-y;background:#111}
+.ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:var(--brass);pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.5)}
+.ba-handle span{position:absolute;top:50%;left:50%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;background:rgba(12,12,12,.85);border:1px solid var(--brass)}
+.ba-handle span::before,.ba-handle span::after{content:"";position:absolute;top:50%;width:7px;height:7px;border-top:1.5px solid var(--brass);border-left:1.5px solid var(--brass)}
+.ba-handle span::before{left:11px;transform:translateY(-50%) rotate(-45deg)}
+.ba-handle span::after{right:11px;transform:translateY(-50%) rotate(135deg)}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none}
+.ba-range:focus-visible + *{outline:none}
+.ba-slider:focus-within{outline:2px solid var(--brass);outline-offset:3px}
+.ba-tag{position:absolute;top:14px;font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--text);background:rgba(12,12,12,.72);border:1px solid var(--line-soft);padding:6px 10px;pointer-events:none}
+.ba-tag-b{left:14px}
+.ba-tag-a,.ba-tag-gold{right:14px;color:var(--brass);border-color:var(--line)}
+/* pair */
+.ba-pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ba-pair-item{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line-soft)}
+.ba-pair-item img{width:100%;height:100%;object-fit:cover}
+.ba-pair-item .ba-tag{left:10px;right:auto;top:10px}
+@media (max-width:760px){
+  .ba-grid{grid-template-columns:minmax(0,440px)}
+  .ba-grid.swipe{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none;justify-content:flex-start}
+  .ba-grid.swipe::-webkit-scrollbar{display:none}
+  .ba-grid.swipe > *{flex:0 0 82%;scroll-snap-align:center}
+}
