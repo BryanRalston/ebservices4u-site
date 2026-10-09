@@ -17,6 +17,8 @@
   $$('[data-requires]').forEach(function (el) {
     if (has[el.getAttribute('data-requires')]) el.hidden = false; else el.hidden = true;
   });
+  // Drop unconfirmed trust items so the grid lays out cleanly
+  $$('.trust-item[hidden]').forEach(function (el) { el.parentNode.removeChild(el); });
   if (has.phone) {
     $$('[data-phone]').forEach(function (el) { el.textContent = C.phoneDisplay; });
     $$('[data-phone-link]').forEach(function (el) { el.href = 'tel:' + C.phoneTel; });
