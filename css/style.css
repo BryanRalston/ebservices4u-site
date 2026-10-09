@@ -653,3 +653,5 @@ a.service-img{display:block}
 .ba-frame.is-playing video{opacity:1}
 .ba-frame.is-failed video{display:none}
 .no-js .ba-play{display:none}
+.estimate-grid>*,.estimate-grid form,.estimate-grid .field,.estimate-grid fieldset{min-width:0}.estimate-grid input,.estimate-grid select,.estimate-grid textarea{max-width:100%;min-width:0}
+@media (max-width:400px){.form-card{padding-left:16px;padding-right:16px}.submit-btn{padding-left:12px;padding-right:12px;letter-spacing:.12em;white-space:normal}.submit-btn .btn-label{white-space:normal}}
