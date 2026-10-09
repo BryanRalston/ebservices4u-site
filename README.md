@@ -5,7 +5,7 @@ Static site with no framework and no build step. GitHub Pages serves it from the
 ```
 index.html        Homepage (all sections)
 bathroom-remodeling/  basement-finishing/  kitchen-remodeling/  media-walls/   (specialties)
-interior-carpentry/  painting-drywall/  handyman-services/                     (secondary)
+carpentry-trim/  painting-drywall/  handyman-services/                     (secondary)  (interior-carpentry/ redirects to carpentry-trim/)
                   Service pages (clean URLs). Estimate buttons link to /?service=<val>#estimate,
                   which pre-selects the service in the homepage form.
 404.html          Not-found page (absolute paths, so it works at any URL depth)

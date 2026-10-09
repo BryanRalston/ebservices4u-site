@@ -662,3 +662,5 @@ a.service-img{display:block}
 .ba-grid.single{grid-template-columns:minmax(0,900px)}
 .ba-pair.wide .ba-pair-item{aspect-ratio:3/2}
 @media (max-width:640px){.ba-pair.wide .ba-pair-grid{grid-template-columns:1fr}}
+.ba-grid.swipe{grid-template-columns:repeat(3,minmax(0,360px))}
+.ba-grid.swipe .ba-video figcaption{font-size:19px}
