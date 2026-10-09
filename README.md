@@ -86,3 +86,14 @@ The four service pages are generated from `/workspace/ebservices/svc_content.py`
 They are plain HTML, so small text edits can also be made directly in each `*/index.html`.
 Each page has its own title/description/OG tags plus Service, BreadcrumbList and FAQPage JSON-LD.
 Form service values: bathroom, carpentry, painting, handyman, other.
+
+## Logo
+`assets/img/logo.png` is the owner's official logo with the dark background removed (exact alpha
+extraction of the two-color artwork). `logo.webp` is the header/footer size, `logo-square.png` is the
+512px version on black used in structured data, and the favicons use the house mark only.
+
+## Analytics (GoatCounter, cookieless, so no consent banner is needed)
+Pre-wired but OFF until `analytics.goatcounter` in `js/config.js` is set to the account code.
+Tracked events: `estimate-submit` (successful form send, title includes the service),
+`call-click` (any tel: link), `request-call-click` (the "Request a Call" button while no phone is set),
+`estimate-cta-click`, `email-click`. Page views are counted automatically.

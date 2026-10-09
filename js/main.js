@@ -69,6 +69,27 @@
     }
   } catch (e) { /* keep static JSON-LD */ }
 
+  /* ---------- Analytics (GoatCounter, cookieless) ---------- */
+  var GC = C.analytics && C.analytics.goatcounter;
+  if (GC && /^[a-z0-9-]+$/i.test(GC)) {
+    var gs = document.createElement('script');
+    gs.async = true; gs.src = 'https://gc.zgo.at/count.js';
+    gs.setAttribute('data-goatcounter', 'https://' + GC + '.goatcounter.com/count');
+    document.head.appendChild(gs);
+  }
+  function track(name, title) {
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: title || name, event: true }); } catch (e) {}
+  }
+  window.ebTrack = track;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a'); if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) track('call-click', 'Call button: ' + (a.className || 'link'));
+    else if (a.hasAttribute('data-call-fallback')) track('request-call-click', 'Request a Call (no phone yet)');
+    else if (/#estimate$/.test(href)) track('estimate-cta-click', 'Estimate button: ' + location.pathname);
+    else if (href.indexOf('mailto:') === 0) track('email-click', 'Email link');
+  }, true);
+
   /* ---------- 2. Header: shrink on scroll + active section ---------- */
   var header = $('#site-header');
   var ticking = false;
@@ -251,6 +272,7 @@
       .then(function () {
         var first = (payload.name || '').trim().split(/\s+/)[0];
         $('[data-ty-name]', ty).textContent = first ? ', ' + first : '';
+        track('estimate-submit', 'Estimate form submitted: ' + (payload.service || 'unknown'));
         form.hidden = true; ty.hidden = false; ty.focus();
       })
       .catch(function () {

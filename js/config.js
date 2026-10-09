@@ -40,6 +40,11 @@ window.SITE_CONFIG = {
     streetAddress: "", addressLocality: "Leesburg", addressRegion: "VA", postalCode: "20175", addressCountry: "US"
   },
 
+  // Analytics (GoatCounter: free, no cookies, no consent banner needed).
+  // Put the account code here, e.g. "ebservices4u" for https://ebservices4u.goatcounter.com.
+  // While empty, no analytics script loads.
+  analytics: { goatcounter: "" },
+
   // Social links. Change instagram to https://www.instagram.com/ebservices4u when the handle moves.
   social: {
     instagram: "https://www.instagram.com/ebservices2u",
