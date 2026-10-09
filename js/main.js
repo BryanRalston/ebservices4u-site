@@ -213,27 +213,45 @@
 
   /* ---------- 5b. Before & after: lazy videos + compare slider ---------- */
   $$('.ba-frame').forEach(function (fr) {
-    var v = fr.querySelector('video'), btn = fr.querySelector('.ba-play'), loaded = false, inView = false, userPaused = reduceMotion;
-    if (!v) return;
+    var v = fr.querySelector('video'), btn = fr.querySelector('.ba-play');
+    if (!v || !btn) return;
+    var loaded = false, failed = false, userPaused = reduceMotion;
+    // iOS/Android need these as real properties + attributes before the source is set.
+    v.muted = true; v.defaultMuted = true; v.playsInline = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
+    if (reduceMotion) { v.autoplay = false; v.removeAttribute('autoplay'); }
+    function sync() {
+      var p = !v.paused && !failed;
+      btn.setAttribute('aria-pressed', String(p)); btn.setAttribute('aria-label', p ? 'Pause video' : 'Play video');
+      fr.classList.toggle('is-paused', !p);
+    }
     function load() {
       if (loaded) return; loaded = true;
-      if (v.dataset.poster) v.poster = v.dataset.poster;
-      $$('source', v).forEach(function (s) { s.src = s.dataset.src; });
-      v.load();
+      v.preload = reduceMotion ? 'metadata' : 'auto';
+      v.src = v.getAttribute('data-src');
+      try { v.load(); } catch (e) {}
     }
-    function sync() { var p = !v.paused; btn.setAttribute('aria-pressed', String(p)); btn.setAttribute('aria-label', p ? 'Pause video' : 'Play video'); fr.classList.toggle('is-paused', !p); }
-    function play() { load(); var pr = v.play(); if (pr && pr.catch) pr.catch(function () { sync(); }); }
-    v.addEventListener('play', sync); v.addEventListener('pause', sync);
-    fr.classList.add('is-paused');
-    btn.addEventListener('click', function () { if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); } });
+    function fail() { failed = true; fr.classList.add('is-failed'); fr.classList.remove('is-playing'); sync(); }
+    function play() {
+      load(); failed = false; fr.classList.remove('is-failed');
+      var pr; try { pr = v.play(); } catch (e) { fail(); return; }
+      if (pr && pr.catch) pr.catch(function () { if (v.paused) { fr.classList.remove('is-playing'); sync(); } });
+    }
+    v.addEventListener('playing', function () { fr.classList.add('is-playing'); sync(); });
+    v.addEventListener('pause', sync);
+    v.addEventListener('error', fail);
+    btn.addEventListener('click', function () {
+      if (v.paused || failed) { userPaused = false; play(); } else { userPaused = true; v.pause(); }
+    });
+    function onView(inView) {
+      if (inView) { if (!userPaused) play(); else load(); }
+      else if (!v.paused) v.pause();
+    }
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          inView = e.isIntersecting;
-          if (inView) { load(); if (!userPaused) play(); } else if (!v.paused) v.pause();
-        });
-      }, { rootMargin: '200px 0px', threshold: 0.01 }).observe(fr);
-    } else { load(); }
+      new IntersectionObserver(function (es) { es.forEach(function (e) { onView(e.isIntersecting); }); },
+        { rootMargin: '300px 300px', threshold: 0 }).observe(fr);
+    } else { onView(true); }
+    sync();
   });
   $$('.ba-slider').forEach(function (sl) {
     var r = sl.querySelector('.ba-range');

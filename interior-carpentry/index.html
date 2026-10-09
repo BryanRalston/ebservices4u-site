@@ -125,13 +125,10 @@
       <p class="section-intro">Real EBServices work, filmed by Evvon before and after.</p>
     </div>
     <div class="ba-grid">
-        <figure class="ba-video reveal">
-          <div class="ba-frame">
-            <video muted loop playsinline preload="none" width="720" height="900" data-poster="/assets/video/bedroom-poster.jpg" aria-label="Before and after video of a bedroom and walk-in closet refresh by EBServices">
-              <source data-src="/assets/video/bedroom.webm" type="video/webm">
-              <source data-src="/assets/video/bedroom.mp4" type="video/mp4">
-            </video>
-            <noscript><img src="/assets/video/bedroom-poster.jpg" width="720" height="900" alt="Before and after video of a bedroom and walk-in closet refresh by EBServices" loading="lazy"></noscript>
+        <figure class="ba-video">
+          <div class="ba-frame is-paused">
+            <img class="ba-poster" src="/assets/video/bedroom-poster.jpg" width="720" height="900" alt="Before and after video of a bedroom and walk-in closet refresh by EBServices" loading="lazy" decoding="async">
+            <video muted autoplay loop playsinline webkit-playsinline disablepictureinpicture preload="none" width="720" height="900" poster="/assets/video/bedroom-poster.jpg" data-src="/assets/video/bedroom.mp4?v=2" aria-hidden="true" tabindex="-1"></video>
             <button type="button" class="ba-play" aria-label="Play video" aria-pressed="false"><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM13 5h3v14h-3z"/></svg></button>
           </div>
           <figcaption>Bedroom &amp; closet refresh: accent wall, paint, custom shelving</figcaption>

@@ -647,3 +647,9 @@ a.service-img{display:block}
   .ba-grid.swipe::-webkit-scrollbar{display:none}
   .ba-grid.swipe > *{flex:0 0 82%;scroll-snap-align:center}
 }
+/* video robustness: poster image always visible underneath; video fades in only once it is actually playing */
+.ba-frame .ba-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ba-frame video{opacity:0;transition:opacity .35s var(--ease);background:transparent}
+.ba-frame.is-playing video{opacity:1}
+.ba-frame.is-failed video{display:none}
+.no-js .ba-play{display:none}
