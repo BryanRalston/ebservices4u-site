@@ -655,3 +655,10 @@ a.service-img{display:block}
 .no-js .ba-play{display:none}
 .estimate-grid>*,.estimate-grid form,.estimate-grid .field,.estimate-grid fieldset{min-width:0}.estimate-grid input,.estimate-grid select,.estimate-grid textarea{max-width:100%;min-width:0}
 @media (max-width:400px){.form-card{padding-left:16px;padding-right:16px}.submit-btn{padding-left:12px;padding-right:12px;letter-spacing:.12em;white-space:normal}.submit-btn .btn-label{white-space:normal}}
+/* media wall photo card + wide before/after pairs */
+.service-photo{display:block;aspect-ratio:3/2;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+.service-photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.service-feature:hover .service-photo img{transform:scale(1.05)}
+.ba-grid.single{grid-template-columns:minmax(0,900px)}
+.ba-pair.wide .ba-pair-item{aspect-ratio:3/2}
+@media (max-width:640px){.ba-pair.wide .ba-pair-grid{grid-template-columns:1fr}}

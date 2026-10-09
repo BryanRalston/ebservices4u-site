@@ -212,47 +212,76 @@
   }
 
   /* ---------- 5b. Before & after: lazy videos + compare slider ---------- */
+  /* One video plays at a time: the one most in view (or the one the user tapped). */
+  var players = [], preferred = null, pickTimer = null;
+  function pick() {
+    pickTimer = null;
+    var best = null, bestScore = 0, vh = window.innerHeight, vw = window.innerWidth;
+    players.forEach(function (P) {
+      if (P.userPaused || P.failed) return;
+      var r = P.fr.getBoundingClientRect();
+      var vis = Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0)) * Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0));
+      var ratio = vis / Math.max(1, r.width * r.height);
+      if (ratio < 0.5) return;
+      var cx = (r.left + r.right) / 2 - vw / 2, cy = (r.top + r.bottom) / 2 - vh / 2;
+      var score = ratio * 10 - Math.sqrt(cx * cx + cy * cy) / Math.max(vw, vh) + (P === preferred ? 100 : 0);
+      if (score > bestScore) { bestScore = score; best = P; }
+    });
+    if (preferred && best !== preferred) preferred = null;
+    players.forEach(function (P) { if (P !== best && !P.v.paused) P.v.pause(); });
+    if (best && best.v.paused) best.play();
+  }
+  function schedule() { if (!pickTimer) pickTimer = setTimeout(pick, 120); }
   $$('.ba-frame').forEach(function (fr) {
     var v = fr.querySelector('video'), btn = fr.querySelector('.ba-play');
     if (!v || !btn) return;
-    var loaded = false, failed = false, userPaused = reduceMotion;
-    // iOS/Android need these as real properties + attributes before the source is set.
-    v.muted = true; v.defaultMuted = true; v.playsInline = true;
-    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
-    if (reduceMotion) { v.autoplay = false; v.removeAttribute('autoplay'); }
+    var P = { fr: fr, v: v, loaded: false, failed: false, userPaused: reduceMotion };
+    v.muted = true; v.defaultMuted = true; v.playsInline = true; v.autoplay = false;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', ''); v.removeAttribute('autoplay');
     function sync() {
-      var p = !v.paused && !failed;
+      var p = !v.paused && !P.failed;
       btn.setAttribute('aria-pressed', String(p)); btn.setAttribute('aria-label', p ? 'Pause video' : 'Play video');
       fr.classList.toggle('is-paused', !p);
     }
-    function load() {
-      if (loaded) return; loaded = true;
-      v.preload = reduceMotion ? 'metadata' : 'auto';
-      v.src = v.getAttribute('data-src');
+    P.load = function () {
+      if (P.loaded) return; P.loaded = true;
+      v.preload = 'auto'; v.src = v.getAttribute('data-src');
       try { v.load(); } catch (e) {}
-    }
-    function fail() { failed = true; fr.classList.add('is-failed'); fr.classList.remove('is-playing'); sync(); }
-    function play() {
-      load(); failed = false; fr.classList.remove('is-failed');
+    };
+    function fail() { P.failed = true; fr.classList.add('is-failed'); fr.classList.remove('is-playing'); sync(); }
+    P.play = function () {
+      P.load(); P.failed = false; fr.classList.remove('is-failed');
       var pr; try { pr = v.play(); } catch (e) { fail(); return; }
-      if (pr && pr.catch) pr.catch(function () { if (v.paused) { fr.classList.remove('is-playing'); sync(); } });
-    }
-    v.addEventListener('playing', function () { fr.classList.add('is-playing'); sync(); });
+      if (pr && pr.catch) pr.catch(function () { sync(); });
+    };
+    v.addEventListener('playing', function () {
+      fr.classList.add('is-playing'); sync();
+      players.forEach(function (O) { if (O !== P && !O.v.paused) O.v.pause(); });
+    });
     v.addEventListener('pause', sync);
     v.addEventListener('error', fail);
     btn.addEventListener('click', function () {
-      if (v.paused || failed) { userPaused = false; play(); } else { userPaused = true; v.pause(); }
+      if (v.paused || P.failed) {
+        P.userPaused = false; preferred = P;
+        players.forEach(function (O) { if (O !== P && !O.v.paused) O.v.pause(); });
+        P.play();
+      } else { P.userPaused = true; if (preferred === P) preferred = null; v.pause(); }
     });
-    function onView(inView) {
-      if (inView) { if (!userPaused) play(); else load(); }
-      else if (!v.paused) v.pause();
-    }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { es.forEach(function (e) { onView(e.isIntersecting); }); },
-        { rootMargin: '300px 300px', threshold: 0 }).observe(fr);
-    } else { onView(true); }
-    sync();
+    players.push(P); sync();
   });
+  if (players.length) {
+    if ('IntersectionObserver' in window) {
+      var near = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) players.forEach(function (P) { if (P.fr === e.target) P.load(); }); });
+      }, { rootMargin: '300px 300px' });
+      var io = new IntersectionObserver(schedule, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+      players.forEach(function (P) { near.observe(P.fr); io.observe(P.fr); });
+    }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    $$('.ba-grid').forEach(function (g) { g.addEventListener('scroll', schedule, { passive: true }); });
+    schedule();
+  }
   $$('.ba-slider').forEach(function (sl) {
     var r = sl.querySelector('.ba-range');
     function set() { sl.style.setProperty('--pos', r.value + '%'); }
