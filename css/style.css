@@ -664,3 +664,7 @@ a.service-img{display:block}
 @media (max-width:640px){.ba-pair.wide .ba-pair-grid{grid-template-columns:1fr}}
 .ba-grid.swipe{grid-template-columns:repeat(3,minmax(0,360px))}
 .ba-grid.swipe .ba-video figcaption{font-size:19px}
+.service-photo{position:relative}
+.concept-tag{position:absolute;left:10px;bottom:10px;padding:4px 8px;background:rgba(10,10,10,.72);border:1px solid rgba(203,166,78,.45);color:#CBA64E;font:600 10px/1 var(--sans,Inter,sans-serif);letter-spacing:.14em;text-transform:uppercase;pointer-events:none}
+.svc-hero-media{position:relative}.svc-hero-media .concept-tag{left:14px;bottom:14px}
+.service-photo img[src*="bath-after-shower"]{object-position:50% 80%}

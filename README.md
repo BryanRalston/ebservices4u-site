@@ -106,3 +106,12 @@ ON: `analytics.goatcounter` in `js/config.js` is `"ebservices4u"`; the dashboard
 Tracked events: `estimate-submit` (successful form send, title includes the service),
 `call-click` (any tel: link), `request-call-click` (the "Request a Call" button while no phone is set),
 `estimate-cta-click`, `email-click`. Page views are counted automatically.
+
+## AI design-concept placeholders (replace with real photos)
+Basement and kitchen have no real project photos yet. Bryan approved AI-generated placeholders:
+- `assets/img/ai-basement.webp` (homepage Basement card + /basement-finishing/ hero)
+- `assets/img/ai-kitchen.webp` (homepage Kitchen card + /kitchen-remodeling/ hero)
+Rules: always show the brass "Design concept" tag, alt text starts "AI design concept:", never use in the
+projects gallery or Before & After, never caption as completed work. They only render once registered in
+img_meta.json (build_html.py CARD_PHOTOS, svc_content.py ai_hero); otherwise the icon art is shown.
+Replace them with real photos as soon as Evvon has finished basement/kitchen jobs.
