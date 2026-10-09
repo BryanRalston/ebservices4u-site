@@ -23,6 +23,12 @@ sitemap.xml, robots.txt, site.webmanifest, favicon.ico, icons
 VA SCC: EBServices LLC, an active Virginia LLC formed April 29, 2023, based in Leesburg, VA 20175 (Loudoun County).
 Owner-confirmed (Oct 2026): owner-operator Evvon Boxill; phone (571) 302-1240; serves Northern Virginia;
 licensed & insured; 2+ years in business; specialties are bathrooms, basement finishing, kitchens and media walls.
+"Technology-forward" means AI design previews: Evvon photographs the client's real space and uses AI to create
+photorealistic previews of the finished room before work starts (always note previews are for visualization).
+**Compliance:** EBServices does NOT offer the technology/electronics side of entertainment systems. Never mention
+TV mounting, AV, wiring, low-voltage, sound, smart-home or electronics installs. Media walls are carpentry and
+finish work only (built-ins, shelving, cabinetry, paneling, slat walls, trim, paint, niches), with the note that the
+client's preferred AV/electronics installer handles the technology.
 **Do not publish** the street address (private) or a license number (none provided). No reviews section until
 there are real reviews.
 

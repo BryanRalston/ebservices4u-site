@@ -590,3 +590,16 @@ a.service-img{display:block}
   .hero .eyebrow-rule::before,.hero .eyebrow-rule::after{display:none}
   .area-sub .dot-sep{display:none}
 }
+/* AI design preview steps */
+.tech-note{font-size:13px;color:var(--muted);border-left:1px solid var(--line-strong);padding-left:14px;margin:0 0 30px;max-width:520px}
+.ai-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(44px,5vw,64px);counter-reset:none}
+.ai-step{position:relative;padding:30px 26px 28px;background:var(--surface);border:1px solid var(--line-soft);transition:border-color .35s var(--ease)}
+.ai-step:hover{border-color:var(--line-strong)}
+.ai-step:not(:last-child)::after{content:"";position:absolute;top:58px;right:-14px;width:10px;height:10px;border-top:1px solid var(--brass);border-right:1px solid var(--brass);transform:rotate(45deg);z-index:1}
+.ai-icon{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border:1px solid var(--line);color:var(--brass);margin-bottom:18px}
+.ai-icon svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.ai-step:nth-child(2) .ai-icon{background:var(--brass);color:var(--on-brass);border-color:var(--brass)}
+.ai-num{position:absolute;top:26px;right:24px;font-family:var(--serif);font-style:italic;font-size:30px;color:var(--brass);opacity:.55}
+.ai-step h3{font-size:25px;margin-bottom:8px}
+.ai-step p{font-size:14.5px;color:var(--muted);line-height:1.6}
+@media (max-width:960px){.ai-steps{grid-template-columns:1fr;gap:14px}.ai-step:not(:last-child)::after{top:auto;bottom:-12px;right:auto;left:44px;transform:rotate(135deg)}}
