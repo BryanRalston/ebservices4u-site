@@ -115,3 +115,10 @@ Rules: always show the brass "Design concept" tag, alt text starts "AI design co
 projects gallery or Before & After, never caption as completed work. They only render once registered in
 img_meta.json (build_html.py CARD_PHOTOS, svc_content.py ai_hero); otherwise the icon art is shown.
 Replace them with real photos as soon as Evvon has finished basement/kitchen jobs.
+
+## Google Search Console
+Preferred: Domain property `ebservices4u.com`, verified with a DNS TXT record (`google-site-verification=...`)
+added at Namecheap (Advanced DNS > Add record > TXT, Host `@`). Nothing on the site changes.
+Alternative (URL-prefix property, HTML tag): set GSC_TOKEN in common.py to the token and run
+build_html.py + build_services.py; the meta tag is then added to every generated page.
+After verifying, submit https://ebservices4u.com/sitemap.xml under Sitemaps.
